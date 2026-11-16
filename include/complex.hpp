@@ -15,13 +15,17 @@ class complex {
   int getReal() const;
   int getImg() const;
 
-  complex operator+(int x);
-  complex operator-(int x);
+  complex operator+(int x) const;
+  complex operator-(int x) const;
+  complex operator+(complex x) const;
+  complex operator*(complex x) const;
+  complex operator/(complex x) const;
+  complex operator-(complex x) const;
   complex operator*(int x);
   complex operator/(int x);
   complex operator*=(int x);
   complex operator-=(int x);
-  complex operator/=(int x);
+  complex& operator/=(int x);
   complex operator%(int x);
   complex operator+=(int x);
   complex operator%=(int x);
@@ -30,15 +34,13 @@ class complex {
   complex operator^=(int x);
   complex operator<<=(int x);
   complex operator>>=(int x);
-  complex operator!=(int x);
-  complex operator==(int x);
-  complex operator<(int x);
-  complex operator>(int x);
-  complex operator<=(int x);
-  complex operator>=(int x);
+  bool operator!=(int x);
+  bool operator==(int x);
+  bool operator<(int x);
+  bool operator>(int x);
+  bool operator<=(int x);
+  bool operator>=(int x);
   complex operator!();
-  complex operator||(int x);
-  complex operator&&(int x);
   complex operator>>(int x);
   complex operator<<(int x);
   complex operator&(int x);
@@ -48,6 +50,11 @@ class complex {
   complex operator++();
   complex operator--();
   friend std::ostream& operator<<(std::ostream& os, const complex& c);
+  friend std::istream& operator<<(std::istream& is, complex& c);
+  friend complex operator-(int x, complex c);
+  friend complex operator+(int x, complex c);
+  friend complex operator*(int x, complex c);
+  friend complex operator/(int x, complex c);
   ~complex();
 };
 
